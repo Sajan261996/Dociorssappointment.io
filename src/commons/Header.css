@@ -1,0 +1,73 @@
+/* Whole Header container */
+.Header {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Top purple bar */
+.top-bar {
+  background-color: purple;
+  color: white;
+  padding: 0px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  height: 40px;
+  width: 40px;
+  border-radius: 6px;
+  object-fit: cover;
+  border: 2px solid white;
+}
+
+.login-button .login-btn {
+  background-color: #3f51b5;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Nav links section */
+.nav-links {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  background-color: white;
+  padding: 10px 0;
+  margin: 0;
+  gap: 100px;
+  border-bottom: 1px solid #ccc;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: grey;
+  font-weight: bold;
+  font-size: 0.9rem;
+  padding-bottom: 5px;
+}
+
+.nav-links li a.active-link {
+  color: #3f51b5;
+}
+
+.nav-links li a.active-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%; /* Center the underline */
+  width: 100%;
+  
+}
