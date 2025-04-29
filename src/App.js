@@ -9,11 +9,11 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Header />
-        <Home/>
         <Routes>
-          {/* Route for Login */}
-          <Route path="/login" element={<Login />} />
-          {/* Redirect any unknown route to Home */}
+          {/* Correct routes */}
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />  
+          {/* Redirect unknown routes */}
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </BrowserRouter>
