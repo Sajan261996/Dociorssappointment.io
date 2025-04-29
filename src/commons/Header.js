@@ -15,7 +15,8 @@ function Header() {
           <h3>Doctor Finder</h3>
         </div>
         <div className="login-button">
-          <Link to="../login/Login.js">
+          {/* Corrected login link */}
+          <Link to="/login">
             <button className="login-btn">LOGIN</button>
           </Link>
         </div>
