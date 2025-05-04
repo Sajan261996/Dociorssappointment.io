@@ -10,10 +10,16 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          {/* Correct routes */}
+          {/* Route for Doctors (default) */}
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />  
-          {/* Redirect unknown routes */}
+          
+          {/* Route for Appointments using same Home component */}
+          <Route path="/Appointment" element={<Home />} />
+
+          {/* Route for Login */}
+          <Route path="/login" element={<Login />} />
+
+          {/* Redirect all unknown routes to home */}
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </BrowserRouter>
