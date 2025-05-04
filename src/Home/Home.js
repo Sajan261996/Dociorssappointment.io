@@ -61,7 +61,6 @@ function Home() {
                 </>
             ) : (
                 <div className="appointments-list">
-                    <h2>Appointments</h2>
                     {appointments.map((appt, index) => (
                         <div key={index} className="appointmentcard-box">
                             <div className="doctor-card">
@@ -69,7 +68,7 @@ function Home() {
                                 <p><strong>Date:</strong> {appt.date}</p>
                                 <p><strong>Symptoms:</strong> {appt.symptoms || "N/A"}</p>
                                 <p><strong>Prior Medical History:</strong> {appt.history || "N/A"}</p>
-                                <button>Rate Appointment</button>
+                                <button className="Rate-button">RATE APPOINTMENT</button>
                             </div>
                         </div>
                     ))}
