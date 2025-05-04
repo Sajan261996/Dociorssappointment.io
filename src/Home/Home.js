@@ -7,10 +7,16 @@ const doctors = [
     { id: 3, name: 'Blossom Valentine', speciality: 'PULMONOLOGIST', rating: 5 },
 ];
 
+const appointment = [
+    { name: "Dr. Hermione Kelley", date: "2021-08-02", symptoms: "", history: "" },
+    { name: "Dr. Alexis Rodriguez", date: "2021-08-02", symptoms: "", history: "" },
+    { name: "Dr. Alexis Rodriguez", date: "2021-08-01", symptoms: "Cold", history: "NA" },
+];
 const specialities = ['All', 'PULMONOLOGIST', 'GENERAL_PHYSICIAN'];
 
 function Home() {
     const [selectedSpeciality, setSelectedSpeciality] = useState('All');
+    const [ activeTab, setactiveTab ] = useState('doctors');
 
     const handleSpecialityChange = (e) => {
         setSelectedSpeciality(e.target.value);
@@ -33,6 +39,7 @@ function Home() {
 
             <div className="doctors-list">
                 {filteredDoctors.map(doctor => (
+                    <div key={doctor.id}className="card-box">
                     <div key={doctor.id} className="doctor-card">
                         <h3>Doctor Name: {doctor.name}</h3>
                         <p><strong>Speciality:</strong> {doctor.speciality}</p>
@@ -41,6 +48,7 @@ function Home() {
                             <button className="appointment-btn">Book Appointment</button>
                             <button className="details-btn">View Details</button>
                         </div>
+                    </div>
                     </div>
                 ))}
             </div>
