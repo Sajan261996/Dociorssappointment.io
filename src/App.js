@@ -21,6 +21,7 @@ function App() {
 
           {/* Redirect all unknown routes to home */}
           <Route path="*" element={<Navigate to="/" />} />
+          
         </Routes>
       </BrowserRouter>
     </div>
