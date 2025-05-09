@@ -10,18 +10,17 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          {/* Route for Doctors (default) */}
+          {/* Home/Doctors list */}
           <Route path="/" element={<Home />} />
-          
-          {/* Route for Appointments using same Home component */}
-          <Route path="/Appointment" element={<Home />} />
 
-          {/* Route for Login */}
+          {/* Optional alias if needed */}
+          <Route path="/appointment" element={<Home />} />
+
+          {/* Login Page */}
           <Route path="/login" element={<Login />} />
 
-          {/* Redirect all unknown routes to home */}
+          {/* Catch-all redirect */}
           <Route path="*" element={<Navigate to="/" />} />
-          
         </Routes>
       </BrowserRouter>
     </div>

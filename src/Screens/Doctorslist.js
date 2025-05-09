@@ -1,44 +1,69 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../Home/Home.css';
+import BookAppointment from '../Screens/BookAppointment'; // ✅ Import the modal
 
 const doctors = [
-    { id: 1, name: 'Ocean Garner', speciality: 'PULMONOLOGIST', rating: 5 },
-    { id: 2, name: 'Kennan Hess', speciality: 'GENERAL_PHYSICIAN', rating: 4 },
-    { id: 3, name: 'Blossom Valentine', speciality: 'PULMONOLOGIST', rating: 5 },
+  { id: 1, name: 'Ocean Garner', speciality: 'PULMONOLOGIST', rating: 5 },
+  { id: 2, name: 'Kennan Hess', speciality: 'GENERAL_PHYSICIAN', rating: 4 },
+  { id: 3, name: 'Blossom Valentine', speciality: 'PULMONOLOGIST', rating: 5 },
 ];
 
 const DoctorsList = () => {
-    return(
-        <div className='home-container'>
-            <div className='filter-section'>
-                <label htmlFor='speciality'> Selected Speciality</label>
-                <select id='speciality'>
-                    <option value=''>---Select---</option>
-                    <option value='PULMONOLOGIST'>PULMONOLOGIST</option>
-                    <option value='GENRAL_PHYSICIAN'>GENRAL_PHYSICIAN</option>
-                </select>
-            </div>
+  const [open, setOpen] = useState(false); // ✅ modal state
+  const [selectedDoctor, setSelectedDoctor] = useState(null); // ✅ selected doctor
 
-            <div className='doctors-list'>
-                {doctors.map((doc) => (
-                    <div key={doc.id} className='doctors-card'>
-                        <h3>Doctors Name : {doc.name}</h3>
-                        <p>Speciality : {doc.speciality}</p>
-                        <p>Rating :{' '}
-                            {Array.from({ length: doc.rating }, (_, i) => (
-                            <span key={i}>⭐</span>
-                            ))}
-                        </p>
-                        <div className="button-group">
-                            <button className="appointment-btn">Book Appointment</button>
-                            <button className="details-btn">View Details</button>
-                            </div>
-                    </div>
-                ))}
+  const handleOpen = (doctor) => {
+    setSelectedDoctor(doctor);
+    setOpen(true);
+  };
 
+  const handleClose = () => {
+    setOpen(false);
+    setSelectedDoctor(null);
+  };
+
+  return (
+    <div className='home-container'>
+      <div className='filter-section'>
+        <label htmlFor='speciality'> Selected Speciality</label>
+        <select id='speciality'>
+          <option value=''>---Select---</option>
+          <option value='PULMONOLOGIST'>PULMONOLOGIST</option>
+          <option value='GENERAL_PHYSICIAN'>GENERAL_PHYSICIAN</option>
+        </select>
+      </div>
+
+      <div className='doctors-list'>
+        {doctors.map((doc) => (
+          <div key={doc.id} className='doctors-card'>
+            <h3>Doctors Name : {doc.name}</h3>
+            <p>Speciality : {doc.speciality}</p>
+            <p>
+              Rating :{' '}
+              {Array.from({ length: doc.rating }, (_, i) => (
+                <span key={i}>⭐</span>
+              ))}
+            </p>
+            <div className='button-group'>
+              <button className='appointment-btn' onClick={() => handleOpen(doc)}>
+                Book Appointment
+              </button>
+              <button className='details-btn'>View Details</button>
             </div>
-        </div>
-    );
+          </div>
+        ))}
+      </div>
+
+      {/* ✅ Modal */}
+      {selectedDoctor && (
+        <BookAppointment
+          open={open}
+          handleClose={handleClose}
+          doctor={selectedDoctor}
+        />
+      )}
+    </div>
+  );
 };
 
 export default DoctorsList;
