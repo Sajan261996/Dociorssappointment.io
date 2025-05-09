@@ -1,5 +1,5 @@
 import React, {useState } from 'react';
-import { Button, Card, CardContent, CardHeader, Dialog, FormControl, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
+import { Button, Card, CardContent, CardHeader, Dialog, FormControl, InputLabel, MenuItem, Select, TextField, Typography, Box } from '@mui/material';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 
@@ -24,11 +24,21 @@ const BookAppointment = ({ open, handleClose, doctor }) => {
 
     return(
         <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
-            <Card>
+            <Card sx={{ bgcolor: '#f5f5f5', minHeight: '600px', p: 2 }}>
                 <CardHeader 
-                  title={<Typography variant='h6' style={{backgroundColor:'#800080', color:'white', padding:'10px' }}>Book An Appointment</Typography>}
+                  title={<Typography variant='h6' style={{backgroundColor:'#800080', color:'white', padding:'12px', fontWeight: 'bold', textAlign: 'left' }}>Book An Appointment</Typography>}
                 />
                 <CardContent>
+                    <Box 
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: 2,
+                        alignItems: 'left',
+                        justifyContent: 'left',
+                        paddingX:2
+                    }}
+                    >
                     <TextField
                     fullWidth
                     label="Doctors Name"
@@ -81,8 +91,9 @@ const BookAppointment = ({ open, handleClose, doctor }) => {
                     variant="contained"
                     colour="primary"
                     onClick={handleSubmit}
-                    style={{ marginTop: '20px' }}
+                    style={{ marginTop: '10px' }}
                     > BOOK Appointment</Button>
+                    </Box>
                 </CardContent>
             </Card>
         </Dialog>
